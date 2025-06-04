@@ -12,21 +12,28 @@ import java.util.Random;
 
 public class WikipediaPathGenerator {
     private static final String BASE_URL = "https://en.wikipedia.org";
-    private static final String RANDOM_URL = BASE_URL + "/wiki/Special:Random";
+    private static final String RANDOM_URL = "/wiki/Special:Random";
 
-    public PathResult generate(int steps) throws IOException {
-        String currentUrl = RANDOM_URL;
+    public PathResult generate(int steps, String language) {
+        String baseUrl = BASE_URL.replace("en", language);
+        String currentUrl = baseUrl + RANDOM_URL;
         String startUrl = "";
         String finalTitle = "";
 
         for (int i = 0; i <= steps; i++) {
-            Document document = Jsoup.connect(currentUrl).get();
+            Document document;
+
+            try {
+                document = Jsoup.connect(currentUrl).get();
+            } catch (IOException exception) {
+                throw new WikipediaPathGenerationException("Failed to generate path", exception);
+            }
 
             if (i == 0) {
                 startUrl = document.location();
             }
 
-            finalTitle = document.title().replace(" - Wikipedia", "");
+            finalTitle = cleanTitle(document.title());
 
             Elements links = document.select("#bodyContent a[href^=\"/wiki/\"]");
 
@@ -38,15 +45,20 @@ public class WikipediaPathGenerator {
                 }
             }
 
-
             if (validLinks.isEmpty()) {
                 break;
             }
 
             String nextHref = validLinks.get(new Random().nextInt(validLinks.size()));
-            currentUrl = BASE_URL + nextHref;
+            if (i != steps) {
+                currentUrl = baseUrl + nextHref;
+            }
         }
 
-        return new PathResult(startUrl, finalTitle);
+        return new PathResult(startUrl, currentUrl, finalTitle);
+    }
+
+    private static String cleanTitle(String title) {
+        return title.replaceFirst("\\s*[-–—]\\s*Wiki.*$", "").trim();
     }
 }

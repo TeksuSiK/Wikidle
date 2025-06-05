@@ -7,7 +7,7 @@ const wikiFrame = document.getElementById('wiki-frame');
 let gameData = null;
 
 function fetchGame(language, difficulty) {
-    return fetch(`http://localhost:8080/game?difficulty=${difficulty}&language=${language}`)
+    return fetch(`/game?difficulty=${difficulty}&language=${language}`)
         .then(res => {
             if (!res.ok) throw new Error(`Server error: ${res.status}`);
             return res.json();
@@ -17,7 +17,7 @@ function fetchGame(language, difficulty) {
 function setupGame(data) {
     gameData = data;
     targetTitle.innerText = "Hasło: " + data.targetTitle;
-    wikiFrame.src = `http://localhost:8080/proxy?url=${encodeURIComponent(data.startUrl)}`;
+    wikiFrame.src = `/proxy?url=${encodeURIComponent(data.startUrl)}`;
     startScreen.style.display = 'none';
     gameWindow.style.display = 'flex';
 }

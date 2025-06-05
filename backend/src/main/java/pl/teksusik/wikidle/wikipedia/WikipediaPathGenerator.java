@@ -26,7 +26,7 @@ public class WikipediaPathGenerator {
             try {
                 document = Jsoup.connect(currentUrl).get();
             } catch (IOException exception) {
-                throw new WikipediaPathGenerationException("Failed to generate path", exception);
+                throw new WikipediaConnectionException("Failed to generate path", exception);
             }
 
             if (i == 0) {

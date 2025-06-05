@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wikidle Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+    <section id="start-screen">
+        <h1>Wikidle</h1>
+        <label for="language-select">Wybierz język:</label>
+        <select id="language-select" aria-label="Wybierz język">
+            <option value="pl" selected>Polski</option>
+            <option value="en">English</option>
+        </select>
+
+        <label for="difficulty-select">Poziom trudności:</label>
+        <select id="difficulty-select" aria-label="Wybierz poziom trudności">
+            <option value="EASY" selected>Łatwy</option>
+            <option value="MEDIUM">Średni</option>
+            <option value="HARD">Trudny</option>
+        </select>
+
+        <button id="start-button" type="button">Start</button>
+
+        <a id="github-link" href="https://github.com/TeksuSiK/Wikidle" target="_blank" aria-label="GitHub">
+            <img src="github-mark.svg" alt="GitHub" />
+        </a>
+    </section>
+
+    <section id="game" style="display:none;">
+        <h1 id="target-title">Hasło: ...</h1>
+        <div id="iframe-container">
+            <iframe id="wiki-frame" src="about:blank" title="Wikipedia game"></iframe>
+        </div>
+    </section>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

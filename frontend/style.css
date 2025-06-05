@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#app {
+    flex-grow: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+#start-screen {
+    flex-grow: 1;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
+}
+
+#start-screen h1 {
+    text-align: center;
+}
+
+#start-screen label {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+#start-screen select, #start-screen button {
+    margin-top: 8px;
+    padding: 8px;
+    font-size: 1rem;
+}
+
+#start-screen button {
+    cursor: pointer;
+    margin-top: 20px;
+    border: none;
+    background-color: #0057b8;
+    color: white;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+#start-screen button:hover {
+    background-color: #004494;
+}
+
+select, button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+#github-link {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+#github-link:hover {
+    opacity: 1;
+}
+
+#github-link img {
+    width: 32px;
+    height: 32px;
+}
+
+#game {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#target-title {
+    margin: 0;
+    padding: 8px 0;
+    flex-shrink: 0;
+}
+
+#iframe-container {
+    flex-grow: 1;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+}
+
+iframe {
+    flex-grow: 1;
+    width: 100%;
+    border: none;
+    display: block;
+    height: auto;
+}

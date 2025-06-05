@@ -2,12 +2,15 @@ package pl.teksusik.wikidle.web;
 
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
+import io.javalin.plugin.bundled.CorsPluginConfig;
 
 public class WebServer {
     private Javalin javalin;
 
     public WebServer launch() {
-        this.javalin = Javalin.create()
+        this.javalin = Javalin.create(config ->
+                        config.bundledPlugins.
+                                enableCors(cors -> cors.addRule(CorsPluginConfig.CorsRule::anyHost)))
                 .start();
         return this;
     }

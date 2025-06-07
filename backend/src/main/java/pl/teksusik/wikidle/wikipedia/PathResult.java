@@ -4,11 +4,13 @@ public class PathResult {
     private final String startUrl;
     private final String targetUrl;
     private final String targetTitle;
+    private final int expectedSteps;
 
-    public PathResult(String startUrl, String targetUrl, String targetTitle) {
+    public PathResult(String startUrl, String targetUrl, String targetTitle, int expectedSteps) {
         this.startUrl = startUrl;
         this.targetUrl = targetUrl;
         this.targetTitle = targetTitle;
+        this.expectedSteps = expectedSteps;
     }
 
     public String getStartUrl() {
@@ -21,5 +23,9 @@ public class PathResult {
 
     public String getTargetTitle() {
         return targetTitle;
+    }
+
+    public int getExpectedSteps() {
+        return expectedSteps;
     }
 }

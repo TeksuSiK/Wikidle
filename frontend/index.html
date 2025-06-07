@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Wikidle Game</title>
+    <title>Wikidle</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 <div id="app">
@@ -31,9 +32,13 @@
     </section>
 
     <section id="game" style="display:none;">
-        <h1 id="target-title">Hasło: ...</h1>
+        <h1 id="target-title">
+            Hasło: <span id="target-word"></span>
+            <span id="step-counter"></span>
+            <span id="timer"></span>
+        </h1>
         <div id="iframe-container">
-            <iframe id="wiki-frame" src="about:blank" title="Wikipedia game"></iframe>
+            <iframe id="wiki-frame" src="about:blank" title="Wikipedia"></iframe>
         </div>
     </section>
 </div>

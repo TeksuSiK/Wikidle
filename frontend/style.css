@@ -102,6 +102,19 @@ select, button {
     flex-shrink: 0;
 }
 
+#step-counter {
+    margin-left: 16px;
+}
+
+#timer {
+    margin-left: 16px;
+}
+
+#step-counter.over-limit {
+    color: red;
+    font-weight: bold;
+}
+
 #iframe-container {
     flex-grow: 1;
     width: 100%;

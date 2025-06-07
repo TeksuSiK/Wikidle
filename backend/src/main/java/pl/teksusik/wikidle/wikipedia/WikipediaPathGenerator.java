@@ -55,7 +55,7 @@ public class WikipediaPathGenerator {
             }
         }
 
-        return new PathResult(startUrl, currentUrl, finalTitle);
+        return new PathResult(startUrl, currentUrl, finalTitle, steps);
     }
 
     private static String cleanTitle(String title) {
